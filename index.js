@@ -21,7 +21,9 @@ $.ajax({
 }).done(function(musiques) {
 
 for (var i = 0; i < musiques.data.length; i++) {
-        console.log(musiques.data[i].title)
+    var txt3 = document.createElement("li");
+        txt3.innerHTML = musiques.data[i].title; 
+        $("ol").append(txt3)
         console.log(musiques.data[i].artist.name)
     }
 });
