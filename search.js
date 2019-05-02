@@ -3,23 +3,20 @@ $('#formSearch').on('submit', getValue);
 function getValue(event) {
     event.preventDefault();
 
-    var $recherche_artist = $('#search-artist').val(); //Get value
-    var $recherche_tri = $('#search-param option:selected').val()
+    var $recherche_artist = $('#search-artist').val(); //Récupérer la valeur de l'input texte
+
+    const $selectMenu = $('#search-param'); //Associer le menu dédoulant à une variable
+    const $selectOption = $selectMenu.find('option:selected'); //Trouver l'option qui a été sélectionnée dans le menu déroulant
+    const $recherche_tri = $selectOption.val(); //Récupérer la valeur de l'option sélectionnée
+
         
     $.ajax({
 
-        url : 'https://api.deezer.com/search?q='+$recherche_tri+'&output=jsonp',
+        url : 'https://api.deezer.com/search?q='+$recherche_artist+'&order='+$recherche_tri+'&output=jsonp',
      
         dataType : 'jsonp'
      
      }).done(function(resultat) {
-
-        $(document).ready(function(){
-            $('#search-param').change(function () {
-            $('#search-param option:selected').val();
-            })
-            .trigger('change');
-        })
 
         const $template = $(document.createDocumentFragment());
         

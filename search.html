@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Recherche</title>
 </head>
@@ -27,19 +28,25 @@
     </div>
   </nav>
 
-  <form class="form-inline d-flex justify-content-start w-75 p-3" id="formSearch">
-    <label for="search-artist">Artiste ou Titre :</label>
-    <input id="search-artist" class="form-control mr-sm-2" type="search" placeholder="">
-    <label for="exampleFormControlSelect1">Trier par :</label>
-    <select class="form-control" id="search-param" >
-      <option value="ALBUM_ASC">Album</option>
-      <option value="ARTIST_ASC">Artiste</option>
-      <option value="TRACK_ASC">Musique</option>
-      <option value="RANKING">Les plus populaires</option>
-      <option value="RATING_ASC">Les mieux notés</option>
-    </select>
-    <button id="btn-search" class="btn btn-info" type="submit">GO</button>
-  </form>
+  <div class="recherche">
+    <h1>Recherche</h1>
+    <p>Recherchez un titre ou un artiste sur Deezer en utilisant le formulaire suivant :</p>
+
+    <form class="form-inline formulaire" id="formSearch">
+      <label for="search-artist">Artiste ou Titre :</label>
+      <input id="search-artist" class="form-control mr-sm-2" type="search" placeholder="">
+      <label for="exampleFormControlSelect1">Filtrer par :</label>
+      <select class="form-control" id="search-param">
+        <option value="ALBUM_ASC">Album</option>
+        <option value="ARTIST_ASC">Artiste</option>
+        <option value="TRACK_ASC">Musique</option>
+        <option value="RANKING">Les plus populaires</option>
+        <option value="RATING_ASC">Les mieux notés</option>
+      </select>
+      <button id="btn-search" class="btn btn-info" type="submit">GO</button>
+    </form>
+  </div>
+  
 
 <div id="results">
 </div>

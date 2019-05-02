@@ -14,19 +14,17 @@
 
 });*/
 
-
+/*
 $.ajax({
     url : 'https://api.deezer.com/search?q=eminem&output=jsonp',
     dataType : 'jsonp' 
 }).done(function(musiques) {
 
 for (var i = 0; i < musiques.data.length; i++) {
-    var txt3 = document.createElement("li");
-        txt3.innerHTML = musiques.data[i].title; 
-        $("ol").append(txt3)
+    var item = document.createElement("li");
+        item.innerHTML = musiques.data[i].title; 
+        $("ol").append(item)
         console.log(musiques.data[i].artist.name)
     }
 });
-
-
-
+*/

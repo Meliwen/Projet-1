@@ -1,9 +1,20 @@
+h1{
+    font-family: 'Roboto',sans-serif;
+}
+
+.recherche{
+    padding: 2%;
+    background-color: rgb(240, 240, 240);
+}
+
+label{
+    padding-right: 20px;
+}
 #results{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 .carte_container{
     width: 20%;
@@ -13,16 +24,17 @@
     border: solid rgba(47, 79, 79, 0.205) 1px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 100%;
-    align-self: flex-start;
+    height: 100%;
 }
 .carte img{
     width: 100%;
 }
 .carte-body{
+    height: auto;
     padding: 2%;
 }
-.carte-title{
-    font-size: 1.5em;
+.carte-footer{
+    margin: 2%;
 }
 
 @media screen and (max-width: 900px) {
