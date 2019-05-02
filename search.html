@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -27,21 +27,22 @@
     </div>
   </nav>
 
-  <form class="form-inline d-flex justify-content-start w-75 p-3" onsubmit="getValue()">
-    <label for="search-titre">Titre</label>
-    <input id="search-titre" class="form-control mr-sm-2" type="search" placeholder="">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="search-artiste">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+  <form class="form-inline d-flex justify-content-start w-75 p-3" id="formSearch">
+    <label for="search-artist">Artiste ou Titre :</label>
+    <input id="search-artist" class="form-control mr-sm-2" type="search" placeholder="">
+    <label for="exampleFormControlSelect1">Trier par :</label>
+    <select class="form-control" >
+      <option value="Album">Album</option>
+      <option>Artiste</option>
+      <option>Musique</option>
+      <option>Les plus populaires</option>
+      <option>Les mieux notés</option>
     </select>
     <button id="btn-search" class="btn btn-info" type="submit">GO</button>
   </form>
 
-<div id="test"></div>
+<div id="results">
+</div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
