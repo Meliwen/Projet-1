@@ -7,9 +7,16 @@ h1{
     background-color: rgb(240, 240, 240);
 }
 
-label{
-    padding-right: 20px;
+.formulaire{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.formulaire input, .formulaire select{
+    width: 200px;
+}
+
 #results{
     width: 100%;
     display: flex;
