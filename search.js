@@ -4,31 +4,39 @@ function getValue(event) {
     event.preventDefault();
 
     var $recherche_artist = $('#search-artist').val(); //Get value
-
+    var $recherche_tri = $('#search-param option:selected').val()
+        
     $.ajax({
 
-        url : 'https://api.deezer.com/search?q='+$recherche_artist+'&output=jsonp',
+        url : 'https://api.deezer.com/search?q='+$recherche_tri+'&output=jsonp',
      
         dataType : 'jsonp'
      
-     }).done(function(musiques) {
+     }).done(function(resultat) {
+
+        $(document).ready(function(){
+            $('#search-param').change(function () {
+            $('#search-param option:selected').val();
+            })
+            .trigger('change');
+        })
 
         const $template = $(document.createDocumentFragment());
         
-        for (var i = 0; i < musiques.data.length; i++) {
+        for (var i = 0; i < resultat.data.length; i++) {
     
-            const track = musiques.data[i].title;
-            const album = musiques.data[i].album.title;
-            const artist = musiques.data[i].artist.name;
-            const cover_big = musiques.data[i].album.cover_big;
+            const track = resultat.data[i].title;
+            const album = resultat.data[i].album.title;
+            const artist = resultat.data[i].artist.name;
+            const cover_big = resultat.data[i].album.cover_big;
 
             $template.append(`
             <div class="carte_container">
                 <div class="carte">
                 <img src="${cover_big}" alt="...">
                 <div class="carte-body">
-                    <p class="carte-title">${track}</p>
-                    <p class="carte-album">${album}</p>
+                    <h5 class="card-title">${track}</h5>
+                    <p class="carte-album">Album: ${album}</p>
                     <p class="carte-artist">${artist}</p>
                 </div>
                 <div class="carte-footer">

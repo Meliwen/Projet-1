@@ -31,12 +31,12 @@
     <label for="search-artist">Artiste ou Titre :</label>
     <input id="search-artist" class="form-control mr-sm-2" type="search" placeholder="">
     <label for="exampleFormControlSelect1">Trier par :</label>
-    <select class="form-control" >
-      <option value="Album">Album</option>
-      <option>Artiste</option>
-      <option>Musique</option>
-      <option>Les plus populaires</option>
-      <option>Les mieux notés</option>
+    <select class="form-control" id="search-param" >
+      <option value="ALBUM_ASC">Album</option>
+      <option value="ARTIST_ASC">Artiste</option>
+      <option value="TRACK_ASC">Musique</option>
+      <option value="RANKING">Les plus populaires</option>
+      <option value="RATING_ASC">Les mieux notés</option>
     </select>
     <button id="btn-search" class="btn btn-info" type="submit">GO</button>
   </form>
