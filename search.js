@@ -58,29 +58,33 @@ function getValue(event) {
         function addFavori() {
             var favs = JSON.parse(localStorage.getItem('fav'));
 
-            var track = $(this).parents('.carte_container').data('track');
+            const track = $(this).parents('.carte_container').data('track'); // La carte qui a été cliquée
 
             var deleted = false;
 
             if (favs === null) {
                 favs = []
             }
-            // A ajouter : parcourir le tableau pour vérifier si le track cliqué se trouve dedans ?
+            // Parcourir le tableau pour vérifier si le track cliqué se trouve dedans
             for (var i = 0; i < favs.length; i++) {
-                if (favs[i].id == track.id) {
-                    favs.splice(i, 1); // SI l'élément s'y trouve, on le supprime avec splice
-                    deleted = true;
+                if (favs[i].id == track.id) {// Si l'élément s'y trouve...
+                    favs.splice(i, 1); // ...on le supprime avec splice
+                    deleted = true; // On vérifie si il a été supprimé
                     break;
                 }
             }
 
-            
+
             if (deleted === false) {
                 // SINON, on l'ajoute avec push
                 favs.push(track);
             }
-            
-            localStorage.setItem('fav', JSON.stringify(favs));
+
+            localStorage.setItem('fav', JSON.stringify(favs)); // On enregistre le nouveau tableau
         }
     })
 }
+// Afficher les musiques favorites mais en string ...
+$("#display_fav").click(function displayFavs() {
+    document.getElementById("result_fav").innerHTML = (localStorage.getItem('fav'));
+ });

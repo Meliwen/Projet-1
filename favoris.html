@@ -31,26 +31,10 @@
   <div class="recherche">
     <h1>Mes favoris</h1>
     <p>Retrouvez ici vos titres préférés</p>
+    <button id="display_fav" type="button" class="btn btn-dark">Afficher mes favoris</button>
   </div>
-
-  <div id="results">
-    <div class="carte_container">
-      <div class="carte">
-        <img src="${cover_big}" alt="...">
-        <div class="carte-body">
-          <h5 class="card-title">${track}</h5>
-          <p class="carte-album">Album: ${album}</p>
-          <p class="carte-artist">${artist}</p>
-          <audio controls>
-            <source src="horse.ogg" type="audio/ogg">
-          </audio>
-        </div>
-        <div class="carte-footer">
-          <button id="addFavori" type="button" class="btn btn-outline-danger">Ajouter aux favoris</button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
+  <div id="result_fav"></div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -66,7 +50,9 @@
 
   <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 
+  <script src="search.js"></script>
   <script src="favoris.js"></script>
+  
 </body>
 
 </html>
