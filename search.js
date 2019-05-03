@@ -9,44 +9,78 @@ function getValue(event) {
     const $selectOption = $selectMenu.find('option:selected'); //Trouver l'option qui a été sélectionnée dans le menu déroulant
     const $recherche_tri = $selectOption.val(); //Récupérer la valeur de l'option sélectionnée
 
-        
+
     $.ajax({
 
-        url : 'https://api.deezer.com/search?q='+$recherche_artist+'&order='+$recherche_tri+'&output=jsonp',
-     
-        dataType : 'jsonp'
-     
-     }).done(function(resultat) {
+        url: 'https://api.deezer.com/search?q=' + $recherche_artist + '&order=' + $recherche_tri + '&output=jsonp',
+
+        dataType: 'jsonp'
+
+    }).done(function (resultat) {
 
         const $template = $(document.createDocumentFragment());
-        
+
         for (var i = 0; i < resultat.data.length; i++) {
-    
+
             const track = resultat.data[i].title;
             const album = resultat.data[i].album.title;
             const artist = resultat.data[i].artist.name;
             const cover_big = resultat.data[i].album.cover_big;
+            const track_preview = resultat.data[i].preview;
+            const track_id = resultat.data[i].id;
 
-            $template.append(`
-            <div class="carte_container">
-                <div class="carte">
-                <img src="${cover_big}" alt="...">
-                <div class="carte-body">
-                    <h5 class="card-title">${track}</h5>
-                    <p class="carte-album">Album: ${album}</p>
-                    <p class="carte-artist">${artist}</p>
-                </div>
-                <div class="carte-footer">
-                    <button type="button" class="btn btn-outline-danger">Ajouter aux favoris</button>
-                </div>
-                </div>
-            </div>
-            `)
+            var $carte = $(`<div class="carte_container">
+                                <div class="carte">
+                                <img src="${cover_big}" alt="...">
+                                <div class="carte-body">
+                                    <h5 class="card-title">${track}</h5>
+                                    <p class="carte-album">Album: ${album}</p>
+                                    <p class="carte-artist">${artist}</p>
+                                    <audio controls>
+                                    <source src="${track_preview}" type="audio/ogg">
+                                    </audio>
+                                </div>
+                                <div class="carte-footer">
+                                    <button type="button" class="btn btn-outline-danger addFavori">Ajouter aux favoris</button>
+                                </div>
+                                </div>
+                            </div>`);
+
+            $carte.data('track', resultat.data[i]);
+
+            $template.append($carte);
         } // fin for
 
-        $('#results').html( $template );
+        $('#results').html($template);
 
-    });
-    
+        $('.addFavori').on('click', addFavori);
+
+        function addFavori() {
+            var favs = JSON.parse(localStorage.getItem('fav'));
+
+            var track = $(this).parents('.carte_container').data('track');
+
+            var deleted = false;
+
+            if (favs === null) {
+                favs = []
+            }
+            // A ajouter : parcourir le tableau pour vérifier si le track cliqué se trouve dedans ?
+            for (var i = 0; i < favs.length; i++) {
+                if (favs[i].id == track.id) {
+                    favs.splice(i, 1); // SI l'élément s'y trouve, on le supprime avec splice
+                    deleted = true;
+                    break;
+                }
+            }
+
+            
+            if (deleted === false) {
+                // SINON, on l'ajoute avec push
+                favs.push(track);
+            }
+            
+            localStorage.setItem('fav', JSON.stringify(favs));
+        }
+    })
 }
-
