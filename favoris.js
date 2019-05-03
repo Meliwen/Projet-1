@@ -1,18 +1,31 @@
-/*$.ajax({
-    url : 'https://api.deezer.com/search?q=eminem&output=jsonp',
-    dataType : 'jsonp' 
-}).done(function(musiques) {
+$('#addFavori').on('click', addFavori);
 
-document.querySelector('#results').innerHTML =
-    musiques.data[0].title
-});
+function addFavori(event) {
+    event.preventDefault();
+    
+    alert("Musique ajoutée aux favoris");
+        
+    $.ajax({
 
-var title = data.title;
-var favoris = sessionStorage.getItem(title);
+        url : 'https://api.deezer.com/search?q='+$recherche_artist+'&order='+$recherche_tri+'&output=jsonp',
+    
+        dataType : 'jsonp'
+     
+     }).done(function(resultat) {
 
-sessionStorage.setItem("titre", title)
+        const $template = $(document.createDocumentFragment());
+    
+        localStorage.setItem('track_id', $track_id);
+        
+        for (var i = 0; i < resultat.data.length; i++) {
+    
+            const track_id = resultat.data[i].id;
 
+            console.log(track_id);
+        } // fin for
 
+        $('#results').html( $template );
 
-sessionStorage.favoris = title;
-console.log(sessionStorage.favoris);*/
+    });
+    
+}
