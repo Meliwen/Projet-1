@@ -1,0 +1,22 @@
+Nouvelle fonctionnalité : enregistrer la recherche (garder la recherche même si on change de page)
+
+Search : fetch (promesses). fetch en jsonp (npm install jsonp)
+
+OU FAIRE LA REQUETE EN JQUERY :
+
+$.ajax(url)
+      (datatype -> jsonp)
+Transforme le format de réponse en jsonp
+
+Pour utiliser NPM, installer node
+
+- Créer un nouveau dossier et l'ouvrir dans VSCode
+- Ouvrir un terminal et démarrer un projet Git :
+git init
+
+- Démmarrer un projet npm : 
+npm init -y
+
+- Installer webpack (qui est un node module)
+npm install --save-dev webpack
+

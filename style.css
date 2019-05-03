@@ -8,9 +8,10 @@ h1{
 }
 
 .formulaire{
-    width: 40%;
+    width: 45%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 .formulaire input, .formulaire select{
